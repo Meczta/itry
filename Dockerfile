@@ -1,12 +1,7 @@
-FROM oktaadmin/awscli
+var http = require('http');
 
-RUN echo "#!/bin/bash\n" > /startscript.sh
-RUN echo "mkdir github\n" >> /startscript.sh
-RUN echo "cd github\n" >> /startscript.sh
-RUN echo "git clone \$github\n" >> /startscript.sh
-RUN echo "cd *\n" >> /startscript.sh
-RUN echo "make dockertest\n" >> /startscript.sh
-
-RUN chmod +x /startscript.sh
-
-CMD /startscript.sh
+//create a server object:
+http.createServer(function (req, res) {
+  res.write('Hello World!'); //write a response to the client
+  res.end(); //end the response
+}).listen(3000); //the server object listens on port 8080
